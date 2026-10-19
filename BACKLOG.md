@@ -4,7 +4,20 @@ Stan na 2026-10-19. Makieta: https://birdypl.github.io/CK_BlackView/
 
 ---
 
-## 🔴 DECYZJA: dokąd kierujemy ruch (przyciski „Kup”)
+## ✅ DECYZJA (2026-10-19): ruch kierujemy na funtech.pl (opcja A)
+
+Decyzja: Michał Ptak, Head of eCommerce CK Mediator | FUNTECH.PL (jedna grupa kapitałowa, więc funtech to nasz sklep, a nie partner).
+
+- **Wdrożone:** wszystkie linki i ceny są w `assets/js/shop.js`, z parametrami UTM (`utm_source=blackviewgaming.pl`, `utm_medium=referral`, `utm_campaign=landing_gaming`, `utm_content=<produkt>`).
+- **Odrzucone:**
+  - osobny sklep Shoper na domenie marki, bo wymaga oddzielnej licencji Shoper i dużych wydatków na pozyskanie ruchu do nowej domeny;
+  - maskowanie domeny ze względu na SEO.
+- **Kierunek:** funtech.pl przechodzi z IdoSell na Shoper (decyzja Michała, bo UX IdoSell jest przestarzały). Po migracji podmieniamy adresy URL tylko w `shop.js`.
+- [ ] Przy migracji funtech na Shoper: przekierowania 301 ze starych adresów IdoSell (`/product-pol-…`) na nowe adresy Shopera. Chroni to SEO funtech i linki z landingu oraz kampanii.
+- [ ] Modele z landingu niedostępne w funtech (PlayPop 8, MP100) mają dziś przycisk „Wkrótce”. Decyzja: wprowadzamy je do oferty czy zamieniamy na dostępne?
+- [ ] Ceny w `shop.js` sprawdzone 2026-10-19 – trzeba je aktualizować ręcznie albo z feedu produktowego.
+
+<details><summary>Analiza opcji (archiwum)</summary>
 
 **Opcje**
 
@@ -46,15 +59,13 @@ Stan na 2026-10-19. Makieta: https://birdypl.github.io/CK_BlackView/
 - [ ] Integracje: GA4, Meta Pixel, Google Ads, Merchant Center (feed produktowy).
 - [ ] Planowany termin uruchomienia nowego sklepu.
 
-**Do ustalenia wewnętrznie**
-- [ ] Jaka jest relacja z funtech.pl: własny sklep czy partner? Od tego zależy, czy kierujemy tam ruch z kampanii płatnych.
-- [ ] Czy nowy sklep Shoper będzie wyłącznie z Blackview, czy wielomarkowy? Od tego zależy wybór między C1 a C2.
+</details>
 
 ---
 
 ## Treści i makieta
 
-- [ ] Ceny w zł (obecnie `XXX zł`), zależnie od decyzji o sklepie.
+- [x] Ceny w zł – pobierane z `shop.js` (funtech.pl).
 - [ ] Decyzje oznaczone `[…]` w makiecie:
   - [ ] Czy wymieniać z nazwy GeForce NOW i Xbox Cloud Gaming? (znaki towarowe; bez sugerowania partnerstwa)
   - [ ] Stopka: „dystrybucja: CK Mediator” – potwierdzić.
@@ -72,7 +83,7 @@ Stan na 2026-10-19. Makieta: https://birdypl.github.io/CK_BlackView/
 
 - [ ] Hosting docelowy i podpięcie domeny blackviewgaming.pl (plik CNAME + rekord DNS, jeśli zostajemy na GitHub Pages).
 - [ ] Przed startem: usunąć `noindex` z HTML i `robots.txt`.
-- [ ] Linki do sklepu przenieść do jednego pliku konfiguracyjnego, plus UTM.
+- [x] Linki do sklepu w jednym pliku (`assets/js/shop.js`), plus UTM.
 - [ ] Optymalizacja grafik (WebP, `srcset`); packshoty mają obecnie 250–660 KB.
 - [ ] Analityka: GA4 / Meta Pixel i baner zgody na cookies (RODO).
 - [ ] Repo jest publiczne (wymóg darmowego GitHub Pages) – zdecydować, czy tak zostaje po starcie.

@@ -94,6 +94,10 @@ a { color: inherit; text-decoration: none; }
 .btn-ghost-dark { border-color: var(--game-line); color: var(--game-ink); }
 .btn-ghost-light { border-color: var(--office-line); color: var(--office-ink); background: #fff; }
 .btn-pop { background: var(--pop-ink); color: var(--pop-yellow); font-family: var(--font-pop); font-size: 17px; }
+.btn { white-space: nowrap; }
+section[id] { scroll-margin-top: 64px; }
+.product .price .is-text { font-size: 17px; }
+.btn.is-soon { background: #d9dee8; color: #6b7690; border-color: transparent; cursor: not-allowed; box-shadow: none; transform: none; }
 
 /* ---------- typografia ---------- */
 .eyebrow {
