@@ -14,7 +14,7 @@ Decyzja: Michał Ptak, Head of eCommerce CK Mediator | FUNTECH.PL (jedna grupa k
   - maskowanie domeny ze względu na SEO.
 - **Kierunek:** funtech.pl przechodzi z IdoSell na Shoper (decyzja Michała, bo UX IdoSell jest przestarzały). Po migracji podmieniamy adresy URL tylko w `shop.js`.
 - [ ] Przy migracji funtech na Shoper: przekierowania 301 ze starych adresów IdoSell (`/product-pol-…`) na nowe adresy Shopera. Chroni to SEO funtech i linki z landingu oraz kampanii.
-- [ ] Modele z landingu niedostępne w funtech (PlayPop 8, MP100) mają dziś przycisk „Wkrótce”. Decyzja: wprowadzamy je do oferty czy zamieniamy na dostępne?
+- [ ] PlayPop 8 i MP100: **zakładamy, że pojawią się w ofercie funtech** (Michał dopytuje). Do tego czasu przycisk „Wkrótce w FUNTECH”. Gdy produkty się pojawią, uzupełniamy `url` i `price` w `shop.js` i nic więcej nie trzeba zmieniać.
 - [ ] Ceny w `shop.js` sprawdzone 2026-10-19 – trzeba je aktualizować ręcznie albo z feedu produktowego.
 
 <details><summary>Analiza opcji (archiwum)</summary>

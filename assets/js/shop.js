@@ -14,6 +14,7 @@ const SHOP = {
     utm_campaign: "landing_gaming",
   },
   products: {
+    // PlayPop 8 i MP100: mają pojawić się w ofercie funtech – uzupełnić url i price
     playpop8: { url: null, price: null },
     mp100: { url: null, price: null },
     mp100pro: {
@@ -60,7 +61,7 @@ const SHOP = {
       el.removeAttribute("href");
       el.classList.add("is-soon");
       el.setAttribute("aria-disabled", "true");
-      el.textContent = "Wkrótce";
+      el.textContent = "Wkrótce w " + SHOP.name;
     }
   });
 
@@ -77,6 +78,6 @@ const SHOP = {
   document.querySelectorAll("[data-shop-note]").forEach((el) => {
     const p = SHOP.products[el.dataset.shopNote];
     if (!p) return;
-    el.textContent = p.url ? (p.note ? p.note + " · " : "") + "w sklepie " + SHOP.name : "dostępność wkrótce";
+    el.textContent = p.url ? (p.note ? p.note + " · " : "") + "w sklepie " + SHOP.name : "wkrótce w sklepie " + SHOP.name;
   });
 })();
