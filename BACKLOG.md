@@ -14,7 +14,8 @@ Decyzja: Michał Ptak, Head of eCommerce CK Mediator | FUNTECH.PL (jedna grupa k
   - maskowanie domeny ze względu na SEO.
 - **Kierunek:** funtech.pl przechodzi z IdoSell na Shoper (decyzja Michała, bo UX IdoSell jest przestarzały). Po migracji podmieniamy adresy URL tylko w `shop.js`.
 - [ ] Przy migracji funtech na Shoper: przekierowania 301 ze starych adresów IdoSell (`/product-pol-…`) na nowe adresy Shopera. Chroni to SEO funtech i linki z landingu oraz kampanii.
-- [ ] Modele z landingu niedostępne w funtech (PlayPop 8, MP100) mają dziś przycisk „Wkrótce”. Decyzja: wprowadzamy je do oferty czy zamieniamy na dostępne?
+- [x] PlayPop 8 pojawił się w funtech (2026-10-20) – link podpięty w `shop.js`. Brakuje ceny (do uzupełnienia `price`).
+- [ ] Modele z landingu niedostępne w funtech (MP100) mają dziś przycisk „Wkrótce”. Decyzja: wprowadzamy je do oferty czy zamieniamy na dostępne?
 - [ ] Ceny w `shop.js` sprawdzone 2026-10-19 – trzeba je aktualizować ręcznie albo z feedu produktowego.
 
 <details><summary>Analiza opcji (archiwum)</summary>
@@ -40,7 +41,7 @@ Decyzja: Michał Ptak, Head of eCommerce CK Mediator | FUNTECH.PL (jedna grupa k
 
 | Na landingu | funtech.pl |
 |---|---|
-| PlayPop 8 | ❌ brak |
+| PlayPop 8 | ✅ od 2026-10-20 (8 GB / 128 GB / Wi-Fi 6) |
 | MP100 | ❌ brak (jest MP100 Pro i5-12450H, 2 399 zł, i MP100 Pro R5-7530U, cena na telefon) |
 | MP100 Pro | ✅ i5-12450H, 2 399 zł |
 | NEX60 | ✅ 2 999 zł |

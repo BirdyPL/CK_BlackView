@@ -14,7 +14,10 @@ const SHOP = {
     utm_campaign: "landing_gaming",
   },
   products: {
-    playpop8: { url: null, price: null },
+    playpop8: {
+      url: "https://funtech.pl/product-pol-25802-Konsola-Blackview-PlayPop-8GB-RAM-128GB-Wi-Fi-6.html",
+      price: null, note: "8 GB RAM / 128 GB / Wi-Fi 6",
+    },
     mp100: { url: null, price: null },
     mp100pro: {
       url: "https://funtech.pl/product-pol-23629-Mini-PC-Blackview-MP100-Pro-i5-12450H-16GB-512GB-W11-Pro-czarny.html",
