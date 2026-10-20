@@ -3,6 +3,7 @@
    Dziś: funtech.pl (IdoSell). Po migracji na Shoper podmieniamy
    tylko adresy URL poniżej.
    url: null  -> produkt niedostępny, przycisk "Wkrótce"
+   soon: true -> jest url, ale produkt chwilowo niedostępny: jak wyżej, cena widoczna
    price: null -> "Zapytaj o cenę"
    Ceny sprawdzone na funtech.pl: 2026-10-19
    ========================================================== */
@@ -14,8 +15,12 @@ const SHOP = {
     utm_campaign: "landing_gaming",
   },
   products: {
-    // PlayPop 8 i MP100: mają pojawić się w ofercie funtech – uzupełnić url i price
-    playpop8: { url: null, price: null },
+    // PlayPop 8: strona w funtech jest, ale produkt niedostępny – usunąć soon, gdy wróci na stan
+    playpop8: {
+      url: "https://funtech.pl/product-pol-25802-Konsola-Blackview-PlayPop-8GB-RAM-128GB-Wi-Fi-6.html",
+      price: 1099, note: "8 GB RAM / 128 GB / Wi-Fi 6", soon: true,
+    },
+    // MP100: ma pojawić się w ofercie funtech – uzupełnić url i price
     mp100: { url: null, price: null },
     mp100pro: {
       url: "https://funtech.pl/product-pol-23629-Mini-PC-Blackview-MP100-Pro-i5-12450H-16GB-512GB-W11-Pro-czarny.html",
@@ -48,13 +53,14 @@ const SHOP = {
     u.searchParams.set("utm_content", content);
     return u.toString();
   };
+  const live = (p) => p.url && !p.soon;
 
   // przyciski: <a data-shop="klucz">
   document.querySelectorAll("[data-shop]").forEach((el) => {
     const key = el.dataset.shop;
     const p = SHOP.products[key];
     if (!p) return;
-    if (p.url) {
+    if (live(p)) {
       el.href = withUtm(p.url, key);
       if (!el.dataset.keepLabel) el.textContent = "Kup w " + SHOP.name;
     } else {
@@ -70,7 +76,7 @@ const SHOP = {
     const p = SHOP.products[el.dataset.shopPrice];
     if (!p) return;
     const prefix = el.dataset.prefix || (p.from ? "od " : "");
-    el.textContent = p.price ? prefix + fmt(p.price) : p.url ? "Zapytaj o cenę" : "Cena wkrótce";
+    el.textContent = p.price ? prefix + fmt(p.price) : live(p) ? "Zapytaj o cenę" : "Cena wkrótce";
     el.classList.toggle("is-text", !p.price);
   });
 
@@ -78,6 +84,6 @@ const SHOP = {
   document.querySelectorAll("[data-shop-note]").forEach((el) => {
     const p = SHOP.products[el.dataset.shopNote];
     if (!p) return;
-    el.textContent = p.url ? (p.note ? p.note + " · " : "") + "w sklepie " + SHOP.name : "wkrótce w sklepie " + SHOP.name;
+    el.textContent = live(p) ? (p.note ? p.note + " · " : "") + "w sklepie " + SHOP.name : "wkrótce w sklepie " + SHOP.name;
   });
 })();
