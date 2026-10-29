@@ -16,6 +16,7 @@ Decyzja: Michał Ptak, Head of eCommerce CK Mediator | FUNTECH.PL (jedna grupa k
 - [ ] Przy migracji funtech na Shoper: przekierowania 301 ze starych adresów IdoSell (`/product-pol-…`) na nowe adresy Shopera. Chroni to SEO funtech i linki z landingu oraz kampanii.
 - [ ] PlayPop 8: strona produktu w funtech jest od 2026-10-20 (1 099 zł), ale 2026-10-29 ma status „Produkt niedostępny” i nie pojawia się w wyszukiwarce sklepu. W `shop.js` ma `soon: true` (przycisk „Wkrótce w FUNTECH”, cena widoczna). Gdy wróci na stan: usunąć `soon`.
 - [ ] MP100: **zakładamy, że pojawi się w ofercie funtech** (Michał dopytuje). Do tego czasu przycisk „Wkrótce w FUNTECH”. Gdy się pojawi, uzupełniamy `url` i `price` w `shop.js` i nic więcej nie trzeba zmieniać.
+- [ ] MP300 (karta na `minipc.html` od 2026-10-29): strona w funtech jest, ale bez ceny („cena na telefon”) i ze sprzecznym stanem („w magazynie w bardzo dużej ilości” i jednocześnie „Produkt niedostępny”). W `shop.js` ma `soon: true`. Sugerowana cena wg tabletowo.pl: 2 599 zł. Po ustaleniu ceny i stanu: uzupełnić `price`, usunąć `soon`.
 - [ ] Ceny w `shop.js` sprawdzone 2026-10-19 – trzeba je aktualizować ręcznie albo z feedu produktowego.
 
 <details><summary>Analiza opcji (archiwum)</summary>
@@ -48,7 +49,8 @@ Decyzja: Michał Ptak, Head of eCommerce CK Mediator | FUNTECH.PL (jedna grupa k
 | SCM8 | ❌ brak (jest SCM6 14", 699 zł) |
 | DCM8 Pro | ❌ brak (są DCM8 15,3" za 1 099 zł i DCM6 14" za 999 zł) |
 | Table 16 | ❌ brak (jest Table 9, cena na telefon) |
-| – | dodatkowo w ofercie: MP300, MP50 (2 199 zł), MP20 (1 599 zł) |
+| MP300 (od 2026-10-29) | ⚠️ strona jest, cena na telefon, stan sprzeczny |
+| – | dodatkowo w ofercie: MP50 (2 199 zł), MP20 (1 599 zł) |
 
 → Jeśli wybierzemy opcję A: **pokazujemy na landingu modele dostępne w funtech** (SCM6, DCM8, Table 9, MP100 Pro i5), a resztę oznaczamy „Wkrótce” lub „Powiadom mnie”. Do decyzji z Wiktorem.
 
@@ -78,6 +80,12 @@ Decyzja: Michał Ptak, Head of eCommerce CK Mediator | FUNTECH.PL (jedna grupa k
   - DCM = laptop + 2 ekrany boczne (3 ekrany);
   - Table 8, 9, 10 = pojedynczy ekran na stojaku, Table 16 = 3 ekrany;
   - oficjalna strona marki to blackview.hk, a nie blackview.com (inna firma).
+- [ ] MP300 – pytania do producenta (zadane Wiktorowi 2026-10-29, czekamy). Materiały: `C:\!_Data\BlackView\MP\MP300`.
+  - Sloty M.2: grafiki pokazują 1× PCIe Gen4 x4 + 2 sloty rozszerzeń (do 6 TB), a specyfikacja `.xlsx` mówi „M.2 2280 SATA3.0 ×1”. Jaki interfejs mają 2 sloty rozszerzeń?
+  - Dysk 512 GB w zestawie: NVMe czy SATA? (na renderze złącze B+M, typowe dla SATA)
+  - USB-A: Gen1 (5 Gb/s) czy Gen2 (10 Gb/s)? Grafiki mówią Gen2, a `.xlsx` „Gen1 10Gbps”.
+  - Hasła porównawcze („40% higher memory speed”, „2.5× bandwidth”, „150 kWh annually”) – na landingu pomijamy bez podstawy.
+  - Karta w funtech podaje „3 sloty M.2 do 6 TB” – po odpowiedzi ewentualnie poprawić.
 - [ ] Opinia Wiktora o makiecie.
 
 ## Technika

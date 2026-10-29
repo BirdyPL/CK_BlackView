@@ -319,6 +319,7 @@ section { padding: 96px 0; }
 .mode-dark li strong { color: var(--game-ink); }
 
 .products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.products.cols-2 { grid-template-columns: repeat(2, 1fr); }
 .product {
   background: var(--office-surface); border: 1px solid var(--office-line); border-radius: 24px;
   overflow: hidden; display: flex; flex-direction: column;
@@ -397,7 +398,7 @@ section { padding: 96px 0; }
   .split-hero .col-dark .ctas { justify-content: flex-start; }
   .hero-tag { white-space: normal; text-align: center; width: calc(100% - 32px); bottom: 24px; }
 
-  .hub-cards, .products, .tiers, .pop-feats, .steps, .usecases,
+  .hub-cards, .products, .products.cols-2, .tiers, .pop-feats, .steps, .usecases,
   .pop-band, .pop-hero .grid, .pop-privacy, .pop-photos, .modes,
   .page-hero .grid, .social .grid { grid-template-columns: 1fr; }
   .compare { grid-template-columns: 1fr; }

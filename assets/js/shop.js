@@ -26,6 +26,11 @@ const SHOP = {
       url: "https://funtech.pl/product-pol-23629-Mini-PC-Blackview-MP100-Pro-i5-12450H-16GB-512GB-W11-Pro-czarny.html",
       price: 2399, note: "wariant i5-12450H / 16 GB / 512 GB",
     },
+    // MP300: strona w funtech jest, ale bez ceny i ze sprzecznym stanem – usunąć soon po wyjaśnieniu
+    mp300: {
+      url: "https://funtech.pl/product-pol-25468-Mini-PC-Blackview-MP300-Intel-Core-5-210H-16GB-SSD-512GB-Win-11-Pro.html",
+      price: null, note: "Core 5 210H / 16 GB / 512 GB", soon: true,
+    },
     nex60: {
       url: "https://funtech.pl/product-pol-24629-Mini-PC-Blackview-NEX60-Intel-Raptor-lake-Core-5-210H-16GB-SSD-512GB-Win-11-Pro-czarny.html",
       price: 2999, note: "Core 5 210H / 16 GB / 512 GB",
