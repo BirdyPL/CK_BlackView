@@ -95,7 +95,7 @@ Decyzja: Michał Ptak, Head of eCommerce CK Mediator | FUNTECH.PL (jedna grupa k
 - [ ] Hosting docelowy i podpięcie domeny blackviewgaming.pl (plik CNAME + rekord DNS, jeśli zostajemy na GitHub Pages).
 - [ ] Przed startem: usunąć `noindex` z HTML i `robots.txt`.
 - [x] Linki do sklepu w jednym pliku (`assets/js/shop.js`), plus UTM.
-- [ ] Optymalizacja grafik (WebP, `srcset`); packshoty mają obecnie 250–660 KB.
+- [x] Optymalizacja grafik (2026-10-29): wszystkie grafiki w WebP (jakość 82), z 6,3 MB do ok. 470 KB; `width`/`height` i `loading="lazy"` poza pierwszym ekranem. Bez `srcset`: grafiki mają 470–900 px, a wyświetlane są w ok. 320–450 px CSS, więc na ekranach 2× pełny rozmiar i tak jest potrzebny. Nowe grafiki dodawać od razu jako WebP.
 - [ ] Analityka: GA4 / Meta Pixel i baner zgody na cookies (RODO).
 - [ ] Repo jest publiczne (wymóg darmowego GitHub Pages) – zdecydować, czy tak zostaje po starcie.
 
