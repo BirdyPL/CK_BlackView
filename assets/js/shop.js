@@ -20,13 +20,21 @@ const SHOP = {
       url: "https://funtech.pl/product-pol-25802-Konsola-Blackview-PlayPop-8GB-RAM-128GB-Wi-Fi-6.html",
       price: 1099, note: "8 GB RAM / 128 GB / Wi-Fi 6", soon: true,
     },
+    mp20: {
+      url: "https://funtech.pl/product-pol-24757-Mini-PC-Blackview-MP20-AMD-Ryzen-3-3300U-8GB-SSD-256GB-Win-11-Pro-czarny.html",
+      price: 1599, note: "Ryzen 3 3300U / 8 GB / 256 GB",
+    },
+    mp50: {
+      url: "https://funtech.pl/product-pol-24627-Mini-PC-Blackview-MP50-AMD-Ryzen-5-3500U-16GB-SSD-512GB-Win-11-Pro-czarny.html",
+      price: 2199, note: "Ryzen 5 3500U / 16 GB / 512 GB",
+    },
     // MP100: ma pojawić się w ofercie funtech – uzupełnić url i price
     mp100: { url: null, price: null },
     mp100pro: {
       url: "https://funtech.pl/product-pol-23629-Mini-PC-Blackview-MP100-Pro-i5-12450H-16GB-512GB-W11-Pro-czarny.html",
       price: 2399, note: "wariant i5-12450H / 16 GB / 512 GB",
     },
-    // MP300: strona w funtech jest, ale bez ceny i ze sprzecznym stanem – usunąć soon po wyjaśnieniu
+    // MP300: na stanie, ale funtech jeszcze nie ma ceny – uzupełnić price i usunąć soon
     mp300: {
       url: "https://funtech.pl/product-pol-25468-Mini-PC-Blackview-MP300-Intel-Core-5-210H-16GB-SSD-512GB-Win-11-Pro.html",
       price: null, note: "Core 5 210H / 16 GB / 512 GB", soon: true,

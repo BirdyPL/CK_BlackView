@@ -16,7 +16,8 @@ Decyzja: Michał Ptak, Head of eCommerce CK Mediator | FUNTECH.PL (jedna grupa k
 - [ ] Przy migracji funtech na Shoper: przekierowania 301 ze starych adresów IdoSell (`/product-pol-…`) na nowe adresy Shopera. Chroni to SEO funtech i linki z landingu oraz kampanii.
 - [ ] PlayPop 8: strona produktu w funtech jest od 2026-10-20 (1 099 zł), ale 2026-10-29 ma status „Produkt niedostępny” i nie pojawia się w wyszukiwarce sklepu. W `shop.js` ma `soon: true` (przycisk „Wkrótce w FUNTECH”, cena widoczna). Gdy wróci na stan: usunąć `soon`.
 - [ ] MP100: **zakładamy, że pojawi się w ofercie funtech** (Michał dopytuje). Do tego czasu przycisk „Wkrótce w FUNTECH”. Gdy się pojawi, uzupełniamy `url` i `price` w `shop.js` i nic więcej nie trzeba zmieniać.
-- [ ] MP300 (karta na `minipc.html` od 2026-10-29): strona w funtech jest, ale bez ceny („cena na telefon”) i ze sprzecznym stanem („w magazynie w bardzo dużej ilości” i jednocześnie „Produkt niedostępny”). W `shop.js` ma `soon: true`. Sugerowana cena wg tabletowo.pl: 2 599 zł. Po ustaleniu ceny i stanu: uzupełnić `price`, usunąć `soon`.
+- [ ] MP300 (karta na `minipc.html` od 2026-10-29): w funtech na stanie, ale jeszcze bez ceny (Michał ustawia). W `shop.js` ma `soon: true`. Sugerowana cena wg tabletowo.pl: 2 599 zł. Po ustawieniu ceny: uzupełnić `price`, usunąć `soon`. Uwaga: dopóki ceny nie ma, dane strukturalne strony podają `price: 0.00` + `InStock` (ryzyko dla Google Merchant).
+- [ ] MP50: czy zestaw zawiera klawiaturę, mysz, uchwyt VESA i kabel HDMI? Tak twierdzi specyfikacja producenta, a karta w funtech o tym milczy. Jeśli tak – dopisać na landingu (mocny argument) i w funtech.
 - [ ] Ceny w `shop.js` sprawdzone 2026-10-19 – trzeba je aktualizować ręcznie albo z feedu produktowego.
 
 <details><summary>Analiza opcji (archiwum)</summary>
@@ -49,8 +50,9 @@ Decyzja: Michał Ptak, Head of eCommerce CK Mediator | FUNTECH.PL (jedna grupa k
 | SCM8 | ❌ brak (jest SCM6 14", 699 zł) |
 | DCM8 Pro | ❌ brak (są DCM8 15,3" za 1 099 zł i DCM6 14" za 999 zł) |
 | Table 16 | ❌ brak (jest Table 9, cena na telefon) |
-| MP300 (od 2026-10-29) | ⚠️ strona jest, cena na telefon, stan sprzeczny |
-| – | dodatkowo w ofercie: MP50 (2 199 zł), MP20 (1 599 zł) |
+| MP300 (od 2026-10-29) | ⚠️ na stanie, cena w trakcie ustawiania |
+| MP50 (od 2026-10-29) | ✅ Ryzen 5 3500U, 2 199 zł |
+| MP20 (od 2026-10-29) | ✅ Ryzen 3 3300U, 1 599 zł (materiały producenta są tylko dla wariantu N150 – packshot z karty funtech) |
 
 → Jeśli wybierzemy opcję A: **pokazujemy na landingu modele dostępne w funtech** (SCM6, DCM8, Table 9, MP100 Pro i5), a resztę oznaczamy „Wkrótce” lub „Powiadom mnie”. Do decyzji z Wiktorem.
 
