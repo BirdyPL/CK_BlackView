@@ -1,0 +1,21 @@
+name: Ceny i dostępność (funtech)
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # codziennie ok. 7:00/8:00 czasu polskiego
+  workflow_dispatch:
+  push:
+    paths:
+      - assets/js/shop.js
+      - tools/check-prices.mjs
+      - .github/workflows/check-prices.yml
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node tools/check-prices.mjs

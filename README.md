@@ -14,6 +14,7 @@ Statyczny HTML + CSS bez budowania. Żeby zobaczyć stronę, otwórz `index.html
 | `ekrany.html` | Ekrany przenośne SCM, DCM, Table |
 | `assets/css/style.css` | Wspólne style |
 | `assets/img/` | Grafiki zmniejszone do wersji webowej (źródła na SharePoint) |
+| `tools/` | Wycinanie tła i konwersja grafik do WebP, sprawdzanie cen w sklepie (opis w `tools/README.md`) |
 
 Oznaczenia w treści:
 - `XXX zł`: ceny do uzupełnienia;

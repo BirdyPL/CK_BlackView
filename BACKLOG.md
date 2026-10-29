@@ -15,10 +15,21 @@ Decyzja: Michał Ptak, Head of eCommerce CK Mediator | FUNTECH.PL (jedna grupa k
 - **Kierunek:** funtech.pl przechodzi z IdoSell na Shoper (decyzja Michała, bo UX IdoSell jest przestarzały). Po migracji podmieniamy adresy URL tylko w `shop.js`.
 - [ ] Przy migracji funtech na Shoper: przekierowania 301 ze starych adresów IdoSell (`/product-pol-…`) na nowe adresy Shopera. Chroni to SEO funtech i linki z landingu oraz kampanii.
 - [ ] PlayPop 8: strona produktu w funtech jest od 2026-10-20 (1 099 zł), ale 2026-10-29 ma status „Produkt niedostępny” i nie pojawia się w wyszukiwarce sklepu. W `shop.js` ma `soon: true` (przycisk „Wkrótce w FUNTECH”, cena widoczna). Gdy wróci na stan: usunąć `soon`.
-- [ ] MP100: **zakładamy, że pojawi się w ofercie funtech** (Michał dopytuje). Do tego czasu przycisk „Wkrótce w FUNTECH”. Gdy się pojawi, uzupełniamy `url` i `price` w `shop.js` i nic więcej nie trzeba zmieniać.
+- [ ] MP100: **zakładamy, że pojawi się w ofercie funtech** (Michał dopytuje). Do tego czasu przycisk „Wkrótce w FUNTECH”, a karta stoi na końcu listy z plakietką „Wkrótce w ofercie”. Sekcja „Dzień pracy” na `minipc.html` opisuje teraz MP300 (2026-10-29). Gdy MP100 się pojawi, uzupełniamy `url` i `price` w `shop.js`.
+- [ ] Ekrany: funtech wprowadzi SCM8, DCM8 Pro i Table 16 (decyzja Michała, 2026-10-29). Dziś karty na `ekrany.html` pokazują te modele, a „Kup” prowadzi do SCM6, DCM6 i Table 9. Po wprowadzeniu: podmienić `url`, `price` i `note` w `shop.js`.
 - [x] MP300: cena 2 599 zł i stan „na stanie” w funtech od 2026-10-29 – w `shop.js` przycisk „Kup w FUNTECH”.
-- [ ] MP50: czy zestaw zawiera klawiaturę, mysz, uchwyt VESA i kabel HDMI? Tak twierdzi specyfikacja producenta, a karta w funtech o tym milczy. Jeśli tak – dopisać na landingu (mocny argument) i w funtech.
+- [x] MP50: w polskim zestawie **nie ma klawiatury ani myszy** (sprawdzone 2026-10-29), mimo że specyfikacja producenta je wymienia. Na landingu i w funtech o nich nie piszemy. Niepotwierdzone: uchwyt VESA i kabel HDMI.
 - [ ] Ceny w `shop.js` sprawdzone 2026-10-19 – trzeba je aktualizować ręcznie albo z feedu produktowego.
+
+### „Gdzie kupić” – wiele sklepów (spodziewane oczekiwanie PM-a, Grzegorz)
+
+Spodziewamy się, że PM będzie chciał kierować ruch nie tylko do funtech.pl, ale też do dużego retailu (np. mediaexpert.pl, x-kom.pl). Według tabletowo.pl MP300 jest już w x-kom i Media Expert.
+
+- [ ] Ustalić z Grzegorzem: które sieci, dla których produktów, kolejność (funtech pierwszy?), czy pokazujemy ceny innych sklepów.
+- [ ] Model danych: w `shop.js` każdy produkt dostaje listę sklepów zamiast jednego `url` (`retailers: [{ shop, url, price }]`), a UTM ustawiany per sklep.
+- [ ] UI: „Kup w FUNTECH” jako główny przycisk + „Inne sklepy” (rozwijana lista albo okienko z logotypami). Działający link „Gdzie kupić” w stopce (dziś `#`).
+- [ ] Mierzenie: kliknięcia per sklep w GA4 (zdarzenie `select_retailer` z nazwą sklepu i produktu).
+- [ ] Ryzyko: ceny w retailu zmieniają się często. Albo bez cen przy innych sklepach, albo automatyczne sprawdzanie (patrz `tools/check-prices.mjs`).
 
 <details><summary>Analiza opcji (archiwum)</summary>
 
@@ -76,7 +87,7 @@ Decyzja: Michał Ptak, Head of eCommerce CK Mediator | FUNTECH.PL (jedna grupa k
   - [ ] Stopka: „dystrybucja: CK Mediator” – potwierdzić.
   - [ ] PlayPop: rezygnujemy z hasła producenta „100% niezawodna ochrona prywatności”?
   - [ ] Szacunek „gamingowy PC 12–15 tys. zł” – potwierdzić z marketingiem.
-- [ ] Lista gier e-sportowych i FPS na MP100 / MP100 Pro – do testów.
+- [ ] Lista gier e-sportowych i FPS na modelach w sprzedaży (MP100 Pro, MP300, MP50) – do testów.
 - [ ] PlayPop: zawartość zestawu – zweryfikować ze specyfikacją `.xlsx`.
 - [ ] Przekazać Wiktorowi korekty opisów:
   - DCM = laptop + 2 ekrany boczne (3 ekrany);
