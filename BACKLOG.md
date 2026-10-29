@@ -20,6 +20,18 @@ Decyzja: Michał Ptak, Head of eCommerce CK Mediator | FUNTECH.PL (jedna grupa k
 - [x] MP300: cena 2 599 zł i stan „na stanie” w funtech od 2026-10-29 – w `shop.js` przycisk „Kup w FUNTECH”.
 - [x] MP50: w polskim zestawie **nie ma klawiatury ani myszy** (sprawdzone 2026-10-29), mimo że specyfikacja producenta je wymienia. Na landingu i w funtech o nich nie piszemy. Niepotwierdzone: uchwyt VESA i kabel HDMI.
 - [ ] Ceny w `shop.js` sprawdzone 2026-10-19 – trzeba je aktualizować ręcznie albo z feedu produktowego.
+- [ ] MP300: w feedzie B2B nazwa „… klawiatura + mysz”, a karta w funtech o tym nie mówi. Magazyn: sprawdzić zawartość zestawu MP300 (razem z VESA i HDMI dla MP50).
+- [ ] Warianty z magazynu B2B, których nie ma (albo nie mają ceny) w funtech: MP20 16 GB/512 GB, MP100 Pro i3-1215U, MP100 Pro Ryzen 5 7530U („cena na telefon”). Decyzja: wprowadzić do funtech i pokazać na landingu?
+
+### Źródło danych o produktach: feed XML z nowego sklepu na Shoperze (decyzja 2026-10-29)
+
+Dziś `tools/check-prices.mjs` czyta dane schema.org z kart produktów funtech (IdoSell). Docelowo **nie budujemy integracji z IdoSell ani z feedem B2B**, tylko przygotowujemy się na **feed XML z nowego sklepu na Shoperze**. Tam migruje funtech i tam będą też **sklepy vendorskie** (marek).
+
+- Feed B2B CK Mediator (format Ceneo) **odrzucony jako źródło**: zawiera ceny hurtowe, nie detaliczne. Adres feedu jest poufny (token w URL), więc nigdy nie wpisujemy go do tego repo, bo repo jest publiczne.
+- [ ] Ustalić format feedu Shopera (Ceneo / Google Merchant / własny) i czy zawiera: cenę detaliczną brutto, dostępność lub stan, URL produktu, EAN lub kod producenta.
+- [ ] Klucz produktu: powiązać wpisy w `shop.js` z feedem po kodzie producenta lub EAN (np. `MP300-BK/BV`) zamiast po URL. Adresy i tak zmienią się przy migracji.
+- [ ] Po migracji: `check-prices.mjs` czyta feed Shopera (jeśli feed nie jest publiczny – adres w sekrecie Actions). Opcjonalnie generowanie cen w `shop.js` z feedu zamiast ręcznego wpisywania.
+- [ ] Sklepy vendorskie: czy będzie sklep Blackview? Jeśli tak – czy przycisk „Kup” prowadzi do sklepu vendorskiego, do funtech, czy do obu (powiązane z „Gdzie kupić” niżej).
 
 ### „Gdzie kupić” – wiele sklepów (spodziewane oczekiwanie PM-a, Grzegorz)
 
