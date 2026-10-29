@@ -1,7 +1,7 @@
 /* ==========================================================
    Linki do sklepu i ceny – JEDNO miejsce do zmiany.
-   Dziś: funtech.pl (IdoSell). Po migracji na Shoper podmieniamy
-   tylko adresy URL poniżej.
+   Sklep: funtech.pl. Przy zmianie sklepu podmieniamy tylko
+   adresy URL poniżej.
    url: null  -> produkt niedostępny, przycisk "Wkrótce"
    soon: true -> jest url, ale produkt chwilowo niedostępny: jak wyżej, cena widoczna
    price: null -> "Zapytaj o cenę"
