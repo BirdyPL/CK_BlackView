@@ -46,13 +46,15 @@ const SHOP = {
       url: "https://funtech.pl/product-pol-23935-Monitor-Blackview-14-przenosny-SCM6.html",
       price: 699, note: "SCM6 14\" w ofercie",
     },
+    // DCM6 i Table 9: w funtech niedostępne (2026-10-29) – usunąć soon, gdy wrócą na stan
+    // albo po wprowadzeniu DCM8 Pro i Table 16
     dcm: {
       url: "https://funtech.pl/product-pol-25286-Monitor-Blackview-14-przenosny-podwojny-DCM6.html",
-      price: 999, from: true, note: "DCM6 14\" · DCM8 15,3\" za 1 099 zł",
+      price: 999, from: true, note: "DCM6 14\" · DCM8 15,3\" za 1 099 zł", soon: true,
     },
     table: {
       url: "https://funtech.pl/product-pol-24456-Monitor-Blackview-16-Table-9.html",
-      price: null, note: "Table 9 w ofercie",
+      price: null, note: "Table 9 w ofercie", soon: true,
     },
   },
 };
