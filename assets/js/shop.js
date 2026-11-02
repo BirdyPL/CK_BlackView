@@ -5,7 +5,7 @@
    url: null  -> produkt niedostępny, przycisk "Wkrótce"
    soon: true -> jest url, ale produkt chwilowo niedostępny: jak wyżej, cena widoczna
    price: null -> "Zapytaj o cenę"
-   Ceny sprawdzone na funtech.pl: 2026-10-19 (MP20, MP50, MP300: 2026-10-29)
+   Ceny pilnuje codzienny workflow check-prices (tools/check-prices.mjs).
    ========================================================== */
 const SHOP = {
   name: "FUNTECH",
@@ -32,7 +32,7 @@ const SHOP = {
     mp100: { url: null, price: null },
     mp100pro: {
       url: "https://funtech.pl/product-pol-23629-Mini-PC-Blackview-MP100-Pro-i5-12450H-16GB-512GB-W11-Pro-czarny.html",
-      price: 2399, note: "wariant i5-12450H / 16 GB / 512 GB",
+      price: 2799, note: "wariant i5-12450H / 16 GB / 512 GB",
     },
     mp300: {
       url: "https://funtech.pl/product-pol-25468-Mini-PC-Blackview-MP300-Intel-Core-5-210H-16GB-SSD-512GB-Win-11-Pro.html",
@@ -47,14 +47,13 @@ const SHOP = {
       price: 699, note: "SCM6 14\" w ofercie",
     },
     // DCM6 i Table 9: w funtech niedostępne (2026-10-29) – usunąć soon, gdy wrócą na stan
-    // albo po wprowadzeniu DCM8 Pro i Table 16
     dcm: {
       url: "https://funtech.pl/product-pol-25286-Monitor-Blackview-14-przenosny-podwojny-DCM6.html",
       price: 999, from: true, note: "DCM6 14\" · DCM8 15,3\" za 1 099 zł", soon: true,
     },
     table: {
       url: "https://funtech.pl/product-pol-24456-Monitor-Blackview-16-Table-9.html",
-      price: null, note: "Table 9 w ofercie", soon: true,
+      price: 449, note: "Table 9 w ofercie", soon: true,
     },
   },
 };
