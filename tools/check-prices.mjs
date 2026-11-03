@@ -1,8 +1,10 @@
 /* ==========================================================
    Porównuje ceny i dostępność z assets/js/shop.js z kartami
    produktów w sklepie (dane strukturalne schema.org na stronie).
-   Uruchomienie: node tools/check-prices.mjs
-   Kod wyjścia 1 = są rozbieżności (GitHub Actions wyśle maila).
+   Uruchomienie: node tools/check-prices.mjs [--strict]
+   Rozbieżności: tabela w podsumowaniu runa + ostrzeżenia (żółte)
+   w GitHub Actions. Job kończy się sukcesem, więc GitHub nie wysyła
+   maili. Z --strict kod wyjścia 1 przy rozbieżnościach.
    ========================================================== */
 import { readFile, appendFile } from "node:fs/promises";
 
@@ -29,14 +31,21 @@ for (const [key, p] of Object.entries(SHOP.products)) {
   if (!p.url) { rows.push([key, "–", "–", "brak url (Wkrótce)", ""]); continue; }
   let l;
   try { l = await live(p.url); }
-  catch (e) { rows.push([key, fmt(p.price), "?", "?", "❌ błąd pobrania: " + e.message]); problems++; continue; }
+  catch (e) {
+    rows.push([key, fmt(p.price), "?", "?", "❌ błąd pobrania: " + e.message]); problems++;
+    if (process.env.GITHUB_ACTIONS) console.log(`::warning title=${key}::błąd pobrania: ${e.message}`);
+    continue;
+  }
 
   const issues = [];
   const available = AVAILABLE.includes(l.availability);
   if (p.price !== l.price) issues.push(`cena: shop.js ${fmt(p.price)}, sklep ${fmt(l.price)}`);
   if (!p.soon && !available) issues.push("aktywny przycisk Kup, a w sklepie niedostępny – dodać soon: true");
   if (p.soon && available && l.price) issues.push("w sklepie dostępny z ceną – można zdjąć soon");
-  if (issues.length) problems++;
+  if (issues.length) {
+    problems++;
+    if (process.env.GITHUB_ACTIONS) console.log(`::warning title=${key}::${issues.join("; ")}`);
+  }
   rows.push([key, fmt(p.price), fmt(l.price), l.availability + (p.soon ? " (soon)" : ""), issues.length ? "⚠️ " + issues.join("; ") : "✅"]);
 }
 
@@ -49,4 +58,4 @@ const summary = `## Ceny i dostępność: ${SHOP.name}\n\n${table}\n\n${problems
 
 console.log(summary);
 if (process.env.GITHUB_STEP_SUMMARY) await appendFile(process.env.GITHUB_STEP_SUMMARY, summary);
-process.exit(problems ? 1 : 0);
+process.exit(problems && process.argv.includes("--strict") ? 1 : 0);
