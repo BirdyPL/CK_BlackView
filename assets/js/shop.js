@@ -9,6 +9,7 @@
    ========================================================== */
 const SHOP = {
   name: "FUNTECH",
+  home: "https://funtech.pl/",
   utm: {
     utm_source: "blackviewgaming.pl",
     utm_medium: "referral",
@@ -82,6 +83,11 @@ const SHOP = {
       el.setAttribute("aria-disabled", "true");
       el.textContent = "Wkrótce w " + SHOP.name;
     }
+  });
+
+  // strona główna sklepu: <a data-shop-home>
+  document.querySelectorAll("[data-shop-home]").forEach((el) => {
+    el.href = withUtm(SHOP.home, "gdzie_kupic");
   });
 
   // ceny: <span data-shop-price="klucz" data-prefix="od ">
