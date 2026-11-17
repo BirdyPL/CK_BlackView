@@ -301,15 +301,20 @@ section { padding: 96px 0; }
    Podstrony mini PC / ekrany (split light/dark)
    ========================================================== */
 .page-hero { position: relative; overflow: hidden; color: var(--game-ink); background: var(--game-bg); padding: 88px 0 72px; }
+/* ukos jak w hero strony głównej: jasna część szersza, żeby nagłówek nie wchodził na czarne tło */
 .page-hero::before {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(110deg, #e9eef7 0 38%, transparent 38.2%);
+  background: #e9eef7;
+  /* liczone od środka strony (tam jest granica kolumn), więc nie wędruje przy szerokich ekranach */
+  clip-path: polygon(0 0, calc(50% + 80px) 0, calc(50% - 80px) 100%, 0 100%);
 }
 .page-hero::after {
-  content: ""; position: absolute; top: 0; bottom: 0; left: 38%; width: 3px;
-  background: linear-gradient(var(--cyan), var(--magenta)); transform: skewX(-20deg); box-shadow: 0 0 20px var(--cyan);
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(var(--cyan), var(--magenta));
+  clip-path: polygon(calc(50% + 78px) 0, calc(50% + 82px) 0, calc(50% - 78px) 100%, calc(50% - 82px) 100%);
+  filter: drop-shadow(0 0 10px var(--cyan));
 }
-.page-hero .grid { position: relative; z-index: 2; display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px; align-items: center; }
+.page-hero .grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
 .page-hero .left { color: var(--office-ink); padding-right: 32px; }
 .page-hero .left .eyebrow { color: var(--office-blue); }
 .page-hero .left p { color: var(--office-muted); margin-top: 16px; max-width: 340px; }
@@ -444,7 +449,7 @@ a.retailer:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(14,
   .compare { grid-template-columns: 1fr; }
   .compare .vs { justify-self: center; }
 
-  .page-hero::before { background: linear-gradient(170deg, #e9eef7 0 47%, transparent 47.2%); }
+  .page-hero::before { clip-path: none; background: linear-gradient(170deg, #e9eef7 0 47%, transparent 47.2%); }
   .page-hero::after { display: none; }
   .page-hero .left { padding: 0 0 40px; }
   .page-hero .right { padding-left: 0; }
