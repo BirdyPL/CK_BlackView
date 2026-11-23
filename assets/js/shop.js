@@ -5,10 +5,13 @@
    url: null  -> produkt niedostępny, przycisk "Wkrótce"
    soon: true -> jest url, ale produkt chwilowo niedostępny: jak wyżej, cena widoczna
    price: null -> "Zapytaj o cenę"
+   showPrices: false -> ceny ukryte na całej stronie ("Sprawdź cenę
+   w sklepie"); elementy z data-price-off pokazują wtedy ten tekst.
    Ceny pilnuje codzienny workflow check-prices (tools/check-prices.mjs).
    ========================================================== */
 const SHOP = {
   name: "Funtech.pl",
+  showPrices: false,
   home: "https://funtech.pl/",
   utm: {
     utm_source: "blackviewgaming.pl",
@@ -94,6 +97,12 @@ const SHOP = {
   document.querySelectorAll("[data-shop-price]").forEach((el) => {
     const p = SHOP.products[el.dataset.shopPrice];
     if (!p) return;
+    if (!SHOP.showPrices) {
+      el.textContent = el.dataset.priceOff !== undefined ? el.dataset.priceOff
+        : live(p) ? "Sprawdź cenę w sklepie" : "Wkrótce w sprzedaży";
+      el.classList.add("is-text");
+      return;
+    }
     const prefix = el.dataset.prefix || (p.from ? "od " : "");
     el.textContent = p.price ? prefix + fmt(p.price) : live(p) ? "Zapytaj o cenę" : "Cena wkrótce";
     el.classList.toggle("is-text", !p.price);
@@ -103,6 +112,7 @@ const SHOP = {
   document.querySelectorAll("[data-shop-note]").forEach((el) => {
     const p = SHOP.products[el.dataset.shopNote];
     if (!p) return;
+    if (!SHOP.showPrices) { el.textContent = ""; return; }
     el.textContent = live(p) ? (p.note ? p.note + " · " : "") + "na " + SHOP.name : "wkrótce na " + SHOP.name;
   });
 })();
