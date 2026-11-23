@@ -8,7 +8,7 @@
    Ceny pilnuje codzienny workflow check-prices (tools/check-prices.mjs).
    ========================================================== */
 const SHOP = {
-  name: "FUNTECH",
+  name: "Funtech.pl",
   home: "https://funtech.pl/",
   utm: {
     utm_source: "blackviewgaming.pl",
@@ -76,12 +76,12 @@ const SHOP = {
     if (!p) return;
     if (live(p)) {
       el.href = withUtm(p.url, key);
-      if (!el.dataset.keepLabel) el.textContent = "Kup w " + SHOP.name;
+      if (!el.dataset.keepLabel) el.textContent = "Kup na " + SHOP.name;
     } else {
       el.removeAttribute("href");
       el.classList.add("is-soon");
       el.setAttribute("aria-disabled", "true");
-      el.textContent = "Wkrótce w " + SHOP.name;
+      el.textContent = "Wkrótce na " + SHOP.name;
     }
   });
 
@@ -103,6 +103,6 @@ const SHOP = {
   document.querySelectorAll("[data-shop-note]").forEach((el) => {
     const p = SHOP.products[el.dataset.shopNote];
     if (!p) return;
-    el.textContent = live(p) ? (p.note ? p.note + " · " : "") + "w sklepie " + SHOP.name : "wkrótce w sklepie " + SHOP.name;
+    el.textContent = live(p) ? (p.note ? p.note + " · " : "") + "na " + SHOP.name : "wkrótce na " + SHOP.name;
   });
 })();
