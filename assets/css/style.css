@@ -383,7 +383,7 @@ section { padding: 96px 0; }
 .social .chips { display: flex; gap: 10px; flex-wrap: wrap; }
 
 /* ---------- gdzie kupić ---------- */
-.retailers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.retailers { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
 .retailer {
   display: flex; flex-direction: column; gap: 6px; padding: 28px;
   background: var(--office-surface); border: 1px solid var(--office-line); border-radius: var(--radius);
